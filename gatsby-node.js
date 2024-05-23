@@ -31,7 +31,6 @@ exports.onPostBuild = async ({ graphql }, pluginOptions) => {
                 date
 				size
 				duration
-				length
 				season
               }
             }
