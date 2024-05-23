@@ -52,7 +52,7 @@ exports.onPostBuild = async ({ graphql }, pluginOptions) => {
       title,
       url,
       description: excerpt,
-      tags,
+      categories: tags,
       author: feedOptions.managingEditor,
       date,
       custom_elements: [
