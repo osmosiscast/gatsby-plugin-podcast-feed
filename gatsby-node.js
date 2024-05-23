@@ -45,7 +45,7 @@ exports.onPostBuild = async ({ graphql }, pluginOptions) => {
 
   episodes.forEach(edge => {
     const { html, excerpt, id } = edge.node;
-    const { title, number, date, url, tags } = edge.node.frontmatter;
+    const { title, number, date, url, tags, size, duration, season } = edge.node.frontmatter;
 
     feed.item({
       guid: id,
@@ -61,7 +61,9 @@ exports.onPostBuild = async ({ graphql }, pluginOptions) => {
         { 'itunes:explicit': 'no' },
         { 'itunes:episodeType': 'full' },
         { 'itunes:title': title },
+        { 'itunes:season': season },
         { 'itunes:episode': number },
+        { 'itunes:duration': duration },
         { 'itunes:summary': excerpt },
         { 'itunes:author': feedOptions.managingEditor },
         {
@@ -72,6 +74,11 @@ exports.onPostBuild = async ({ graphql }, pluginOptions) => {
           },
         },
       ],
+	  enclosure: {
+        url,
+        size,
+        type: 'audio/mpeg'
+      },
     });
   });
 
