@@ -15,7 +15,7 @@ exports.onPostBuild = async ({ graphql }, pluginOptions) => {
     graphql(`
       {
         allMarkdownRemark(
-			sort: { fields: [frontmatter___date], order: DESC },
+			sort: { frontmatter: { date: DESC } },
 			filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true } } }
 		) {
           edges {
